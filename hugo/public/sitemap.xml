@@ -2,16 +2,12 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>http://localhost:1313/meghna/examplesite/en/sitemap.xml</loc>
-    
-      <lastmod>2018-09-12T14:51:12+06:00</lastmod>
+    <loc>http://localhost:1313/en/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1313/meghna/examplesite/fr/sitemap.xml</loc>
-    
-      <lastmod>2018-09-12T14:51:12+06:00</lastmod>
+    <loc>http://localhost:1313/de/sitemap.xml</loc>
     
   </sitemap>
   
