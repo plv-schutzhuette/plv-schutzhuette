@@ -26,7 +26,7 @@ concurrency:
 defaults:
   run:
     shell: bash
-    working-directory: hugo
+#    working-directory: hugo
 
 jobs:
   # Build job
@@ -58,6 +58,7 @@ jobs:
           TZ: America/Los_Angeles
         run: |
           hugo \
+            --source ./hugo
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"          
