@@ -41,5 +41,7 @@
 {{ range seq 9 4 }}{{ $size := pow 2 . }}{{ $file := replace "images/favicon-##x##.png" "##" $size }}{{ with resources.Get $file }}
 <link rel="icon" type="{{ .MediaType.Type }}" sizes="{{- $size -}}x{{- $size -}}" href="{{ .RelPermalink }}" />{{ end }}{{ end }}
 
-<script type="text/javascript" src="/js/lightbox.js"></script>
-<link rel="stylesheet" href="/css/lightbox.css">
+
+{{ with resources.Get "js/lightbox.js" }}<script type="text/javascript" src="{{ .RelPermalink }}"></script>{{ end }}
+{{ with resources.Get "css/lightbox.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}" />{{ end }}
+
