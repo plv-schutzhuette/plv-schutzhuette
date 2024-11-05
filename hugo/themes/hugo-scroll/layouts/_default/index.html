@@ -7,7 +7,7 @@
 
 <!-- Welcome screen that scrolls out of view -->
 {{ if not .Params.header_use_video }}
-  {{ with $img := resources.Get .Params.header_image }}
+  {{ with $img := resources.Get .Site.Params.header_image }}
   {{ $image_options := $.Site.Params.image_options | default "webp q90 lanczos photo" -}}
   <style>
   /* Default cover for larger screens, converted to webp */
@@ -77,7 +77,7 @@
 	{{ end }}
 
         <div id="site-head-content" class="inner">
-	    {{ with resources.Get .Params.header_logo }}<img id="blog-logo" alt="" src="{{ .RelPermalink }}" />{{ end }}
+	    {{ with resources.Get .Site.Params.header_logo }}<img id="blog-logo" alt="" src="{{ .RelPermalink }}" />{{ end }}
 
             {{ if .Site.Params.title_guard }}<div class="title-and-description-guard">{{ end }}
               {{ with .Params.header_headline }}<h1 class="blog-title">{{ . | safeHTML }}</h1>{{ end }}

@@ -7,5 +7,4 @@ header_menu: true
 ---
 
 
-
-Lorem Ipsum
+{{< image-gallery gallery_dir="/impressionen" >}}
