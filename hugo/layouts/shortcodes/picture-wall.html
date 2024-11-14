@@ -159,14 +159,11 @@ async function upload(){
   uploadResponse["text"] = "new image";
   let response = await add(uploadResponse);
   console.log("response", response);
+  let itemEl = createListElement(uploadResponse);
 
-  
-  let imgEl = document.createElement("img");
-  let url = uploadResponse.url;
-  url = getThumbnailUrl(url);
-  console.log("replace", url);
-  imgEl.setAttribute("src", url);
-  document.getElementsByTagName("main")[0].appendChild(imgEl);
+
+  let listEl = document.getElementById("picture-wall-list");
+  listEl.prepend(itemEl);
 }
 
 function getThumbnailUrl(url){
@@ -193,38 +190,29 @@ async function uploadImage(){
   return {"deletehash": json.data.deletehash, "url": json.data.link};
 };
 
-/*
-function createUploadForm(){
-  var style = document.createElement('style');
-  style.innerHTML = 'input[type="file"] {display: none;}\n.custom-file-upload {border: 1px solid #ccc;display: inline-block;padding: 6px 12px;cursor: pointer;}';
-  document.getElementsByTagName('head')[0].appendChild(style);
+function createListElement(item){
+    let itemEl = document.createElement("li");
+        
+    let linkEl = document.createElement("a");
+    linkEl.setAttribute("href", item.url);
+    linkEl.setAttribute("title", item.text);
+    linkEl.setAttribute("class", "lightbox-image");
+    
+    let imgEl = document.createElement("img");
+    imgEl.setAttribute("src", getThumbnailUrl(item.url));
+    imgEl.setAttribute("alt", item.text);
+    imgEl.setAttribute("title", item.text);
 
-  let formEl = document.createElement("form");
+    //let spanEl = document.createElement("span");
+    //spanEl.textContent = item.text;
 
-  let labelEl = document.createElement("label");
-  labelEl.setAttribute("for", "myFile");
-  labelEl.setAttribute("class", "custom-file-upload");
-  labelEl.textContent = "Bild auswählen";
+    linkEl.appendChild(imgEl);
+    //linkEl.appendChild(spanEl);
 
-  let inputEl = document.createElement("input");
-  inputEl.setAttribute("type", "file");
-  inputEl.setAttribute("accept", "image/*");
-  inputEl.setAttribute("id", "myFile");
+    itemEl.appendChild(linkEl);
 
-  let buttonEl = document.createElement("button");
-  buttonEl.setAttribute("type", "submit");
-  formEl.addEventListener("submit", async (e) => {
-    e.preventDefault(); 
-    await upload();
-  });
-  buttonEl.textContent = "Submit";
-
-  formEl.appendChild(labelEl);
-  formEl.appendChild(inputEl);
-  formEl.appendChild(buttonEl);
-
-  document.getElementsByTagName("main")[0].appendChild(formEl);
-};*/
+    return itemEl;
+}
 
 (async function (){
     let formEl = document.getElementById("file-upload-form");
@@ -241,26 +229,7 @@ function createUploadForm(){
     let listEl = document.getElementById("picture-wall-list");
 
     items.forEach(item =>{
-        let itemEl = document.createElement("li");
-        
-        let linkEl = document.createElement("a");
-        linkEl.setAttribute("href", item.url);
-        linkEl.setAttribute("title", item.text);
-        linkEl.setAttribute("class", "lightbox-image");
-        
-        let imgEl = document.createElement("img");
-        imgEl.setAttribute("src", getThumbnailUrl(item.url));
-        imgEl.setAttribute("alt", item.text);
-        imgEl.setAttribute("title", item.text);
-
-        //let spanEl = document.createElement("span");
-        //spanEl.textContent = item.text;
-
-        linkEl.appendChild(imgEl);
-        //linkEl.appendChild(spanEl);
-
-        itemEl.appendChild(linkEl);
-
+        let itemEl = createListElement(item);
         listEl.appendChild(itemEl);
     });
 })();
