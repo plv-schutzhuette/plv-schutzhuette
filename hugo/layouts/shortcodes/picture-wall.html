@@ -182,10 +182,13 @@ async function uploadImage(){
 
   formData.append("image", document.getElementById("file-upload-input").files[0]);
   url = "https://api.imgur.com/3/image";
+
   let x = [!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][(!![]+[])[!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()+[])[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[!+[]+!+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]];
   let y = "Aut"+"hor"+"iza"+"tion";
   let z = "Cl"+"ie"+"nt-"+"ID ";
-  let response = await fetch(url, {method: "POST", headers: {y: z+x}, body: formData});
+  const headers = new Headers();
+  headers.append(y, z+x);
+  let response = await fetch(url, {method: "POST", headers: headers, body: formData});
   let json = await response.json();
   return {"deletehash": json.data.deletehash, "url": json.data.link};
 };
