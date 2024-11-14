@@ -2,7 +2,7 @@
 title: "Standort"
 header_menu_title: "Standort"
 navigation_menu_title: "standort"
-weight: 5
+weight: 8
 header_menu: true
 ---
 

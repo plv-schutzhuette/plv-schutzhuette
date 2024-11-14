@@ -2,7 +2,7 @@
 title: "Digitale Fotowand"
 header_menu_title: "Fotowand"
 navigation_menu_title: "fotowand"
-weight: 4
+weight: 6
 header_menu: true
 ---
 

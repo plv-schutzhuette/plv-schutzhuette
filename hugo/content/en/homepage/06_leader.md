@@ -2,7 +2,7 @@
 title: "Leaderprojekt"
 header_menu_title: "Leaderprojekt"
 navigation_menu_title: "leader"
-weight: 4
+weight: 7
 header_menu: true
 ---
 
