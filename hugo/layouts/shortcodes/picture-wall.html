@@ -1,11 +1,21 @@
 <style>
     input[type="file"] {display: none;}
-    .custom-file-upload {border: 1px solid #ccc;display: inline-block;padding: 6px 12px;cursor: pointer;}
+    #file-upload-form{width:100%;text-align:center;display:flex; gap:50px;font-family:open sans, sans-serif}
+    #file-upload-form>div{flex: 1 1 0px}
+    #file-upload-form:first-child{display: flex;flex-flow: wrap;align-items: center;justify-content: center;align-content: center;}
+    #file-upload-form:first-child>*{flex: 1 100%;}
+    .custom-file-upload {border: 1px dashed #ccc;display: flex;align-items: center;justify-content: center;padding: 6px 12px;cursor: pointer;aspect-ratio:1;width:100%;background-size:cover;background-position:center}
+    #file-upload-button{width:100%; height:20%; margin:0px;border:1px solid #ccc; background: rgba(125,125,125,0.5); color:white; cursor: pointer}
+
+
     .picture-wall {overflow: auto; margin-left: -1%!important;}
     .picture-wall li {float: left; display: block; margin: 0 0 1% 1%; width: 19%;}
     .picture-wall li a {text-align: center; text-decoration: none!important; color: #777;}
     .picture-wall li a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
-    .picture-wall li a img {width: 100%; display: block;}
+    .picture-wall li a img {object-fit: cover; aspect-ratio: 1; width: 100%; display: block;}
+    #image-preview {object-fit: cover; aspect-ratio: 1; width: 100%; display: block;}
+    #text-input {width:100%; height:calc(80% - 20px); margin-bottom:10px;}
+    
 
     .loader{
         position: absolute;
@@ -79,9 +89,16 @@
 </ul>
 
 <form id='file-upload-form'>
-    <label for="file-upload-input" class="custom-file-upload">Bild auswählen</label>
-    <input type="file" accept="image/*" id="file-upload-input" />
-    <button type="submit" id="file-upload-button">Absenden</button>
+    <div>
+        <!--{{ with resources.Get "images/upload_default.png" }}<img id="image-preview" src="{{ .Permalink }}"/>{{ end }}-->
+        <label for="file-upload-input" class="custom-file-upload" id="custom-file-upload">Bild auswählen</label>
+        <input type="file" accept="image/*" id="file-upload-input" />
+    </div>
+    <div>
+        <!--<label for="text-input" class="text-input-label">Grusstext</label>-->
+        <textarea id="text-input" class="text-input" placeholder="Hinterlasse einen Grusstext."></textarea>
+        <button type="submit" id="file-upload-button">Abschicken</button>
+    </div>
 </form>
 
 <script>
@@ -155,12 +172,23 @@ function getNextLink(response){
 
 async function upload(){
   let uploadResponse = await uploadImage();
+  if (!uploadResponse){
+    return;
+  }
+
   console.log("uploadResponse", uploadResponse);
-  uploadResponse["text"] = "new image";
+  let textInputEl = document.getElementById("text-input");
+  let tempEl = document.createElement("span");
+  tempEl.textContent = textInputEl.value;
+  uploadResponse["text"] = tempEl.innerHTML;
   let response = await add(uploadResponse);
+  if (!response.ok) {
+    alert("Upload fehlgeschlagen. Versuchen Sie es später erneut(" + response.status + ").");
+    return;
+  }
+
   console.log("response", response);
   let itemEl = createListElement(uploadResponse);
-
 
   let listEl = document.getElementById("picture-wall-list");
   listEl.prepend(itemEl);
@@ -186,6 +214,12 @@ async function uploadImage(){
   const headers = new Headers();
   headers.append(y, z+x);
   let response = await fetch(url, {method: "POST", headers: headers, body: formData});
+  
+  if (!response.ok) {
+    alert("Bildupload fehlgeschlagen. Versuchen Sie es später erneut (" + response.status + ").");
+    return;
+  }
+
   let json = await response.json();
   return {"deletehash": json.data.deletehash, "url": json.data.link};
 };
@@ -229,6 +263,24 @@ function createListElement(item){
         await upload();
     });
 
+    let fileInputEl = document.getElementById("file-upload-input");
+    fileInputEl.addEventListener("change", (e) =>{
+        console.log("hier ausgewhlt");
+        let file = event.target.files[0];
+        if (file) {
+            let previewEl = document.getElementById("custom-file-upload"); //image-preview
+            let url = URL.createObjectURL(file);
+            previewEl.setAttribute("style", "background-image:url("+url+")");
+            //previewEl.src = URL.createObjectURL(file);
+            //previewEl.setAttribute("style", "display:block");
+        }
+        //await upload();
+
+        /*let formElement = document.getElementById("file-upload-form");
+        formElement.submit();
+        formElement.reset();*/
+    });
+
     let items = await getAll();
 
     let loaderEl = document.getElementById("picture-wall-loader");
@@ -244,12 +296,11 @@ function createListElement(item){
 
 
 //TODO
-//fotowand lightbox geht noch nicht
+//verbieten dass text und bild beide leer sind
 //fotowand ladekringel beim hochladen
 //fotowand stylen
 //console logs entfernen
 //text input
-//nur jpg/png/jpeg zulassen
 //nur imgur relative urls im json reinlassen
 //text vorher als textnode sanitizen
 //Fehlerbehandlung

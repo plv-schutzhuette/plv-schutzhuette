@@ -101,7 +101,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 var filename = href.split('/').pop();
                 var split = filename.split(".");
                 var name = split[0];
-                element.setAttribute('title',name);
+                let orig_title = element.getAttribute("title");
+                if (!orig_title){
+                    element.setAttribute('title',name);
+                }
             }
         }
     });
