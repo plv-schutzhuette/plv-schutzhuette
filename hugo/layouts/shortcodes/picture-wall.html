@@ -6,33 +6,27 @@
     #file-upload-form:first-child>*{flex: 1 100%;}
     .custom-file-upload {border: 1px dashed #ccc;display: flex;align-items: center;justify-content: center;padding: 6px 12px;cursor: pointer;aspect-ratio:1;width:100%;background-size:cover;background-position:center}
     #file-upload-button{width:100%; height:20%; margin:0px;border:1px solid #ccc; background: rgba(125,125,125,0.5); color:white; cursor: pointer}
+    #image-preview {object-fit: cover; aspect-ratio: 1; width: 100%; display: block;}
+    #text-input {width:100%; height:calc(80% - 20px); margin-bottom:10px;}
 
-
-    .picture-wall {overflow: auto; margin-left: -1%!important;}
+    .picture-wall {overflow: auto; margin-left: -1%!important; padding:0px;}
     .picture-wall li {float: left; display: block; margin: 0 0 1% 1%; width: 19%;}
     .picture-wall li a {text-align: center; text-decoration: none!important; color: #777;}
     .picture-wall li a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
     .picture-wall li a img {object-fit: cover; aspect-ratio: 1; width: 100%; display: block;}
-    #image-preview {object-fit: cover; aspect-ratio: 1; width: 100%; display: block;}
-    #text-input {width:100%; height:calc(80% - 20px); margin-bottom:10px;}
-    
 
-    .loader{
-        position: absolute;
+    #button-loader{
         width: 100px;
-        height:100px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-    }
-
-    .circular{
-        animation: rotate 2s linear infinite;
         height: 100px;
-        position: relative;
-        width: 100px;
+        top: auto;
+        left: auto;
+        transform: translate(0%,-50%);
+        margin-top: -10px;
+        right: 0px;
     }
-
+    
+    .loader{ position: absolute; width: 100px; height:100px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .circular{ animation: rotate 2s linear infinite; height: 100px; position: relative; width: 100px; }
     .path {
         stroke-dasharray: 1,200;
         stroke-dashoffset: 0;
@@ -97,7 +91,13 @@
     <div>
         <!--<label for="text-input" class="text-input-label">Grusstext</label>-->
         <textarea id="text-input" class="text-input" placeholder="Hinterlasse einen Grusstext."></textarea>
-        <button type="submit" id="file-upload-button">Abschicken</button>
+        <button type="submit" id="file-upload-button">Abschicken
+            <div class="loader" id="button-loader" style="display:none">
+                <svg class="circular">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+                </svg>
+            </div>
+        </button>
     </div>
 </form>
 
@@ -141,7 +141,7 @@ async function getAll(){
     items.push(...it);
     url = getNextLink(response);
   }while(url);
-  return items.reverse();
+  return items; //.reverse();
 };
 
 async function getItems(response){
@@ -149,7 +149,9 @@ async function getItems(response){
   let items = [];
   json.forEach(item =>{
     try{
-      items.push(JSON.parse(item.body));
+      if (item.user.login === "plv-schutzhuette"){
+        items.push(JSON.parse(item.body));
+    }
     }
     catch{}
   });
@@ -170,42 +172,38 @@ function getNextLink(response){
   return nextLinkResult.groups.nextLink;
 };
 
-async function upload(){
-  let uploadResponse = await uploadImage();
+async function upload(file, text){
+  if (!file && !text){
+    alert("Bitte Bild und/oder Text eingeben.");
+    return;
+  }
+  let uploadResponse = await uploadImage(file);
   if (!uploadResponse){
     return;
   }
 
-  console.log("uploadResponse", uploadResponse);
-  let textInputEl = document.getElementById("text-input");
-  let tempEl = document.createElement("span");
-  tempEl.textContent = textInputEl.value;
-  uploadResponse["text"] = tempEl.innerHTML;
+  uploadResponse["text"] = text;
   let response = await add(uploadResponse);
   if (!response.ok) {
     alert("Upload fehlgeschlagen. Versuchen Sie es später erneut(" + response.status + ").");
     return;
   }
 
-  console.log("response", response);
-  let itemEl = createListElement(uploadResponse);
-
-  let listEl = document.getElementById("picture-wall-list");
-  listEl.prepend(itemEl);
+  return uploadResponse;
 }
 
 function getThumbnailUrl(url){
     try{
-        return url.replace(/^(.*)(\.[^\.]+)$/, "$1m$2");
+        return "https://i.imgur.com" + url.replace(/^(.*)(\.[^\.]+)$/, "$1m$2");
     }catch{
         return ""; //TODO placeholder
     }
 }
 
-async function uploadImage(){
+async function uploadImage(file){
   var formData = new FormData();
 
-  formData.append("image", document.getElementById("file-upload-input").files[0]);
+  formData.append("image", file);
   url = "https://api.imgur.com/3/image";
 
   let x = [!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][(!![]+[])[!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()+[])[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[!+[]+!+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]];
@@ -221,7 +219,8 @@ async function uploadImage(){
   }
 
   let json = await response.json();
-  return {"deletehash": json.data.deletehash, "url": json.data.link};
+  
+  return {"deletehash": json.data.deletehash, "url": json.data.link.replace("https://i.imgur.com", "")};
 };
 
 function createListElement(item){
@@ -245,40 +244,53 @@ function createListElement(item){
     imgEl.setAttribute("alt", item.text);
     imgEl.setAttribute("title", item.text);
 
-    //let spanEl = document.createElement("span");
-    //spanEl.textContent = item.text;
-
     linkEl.appendChild(imgEl);
-    //linkEl.appendChild(spanEl);
-
     itemEl.appendChild(linkEl);
 
     return itemEl;
+}
+
+function sanitize(input){
+    let tempEl = document.createElement("span");
+    tempEl.textContent = input;
+    return tempEl.innerHTML;
 }
 
 (async function (){
     let formEl = document.getElementById("file-upload-form");
     formEl.addEventListener("submit", async (e) => {
         e.preventDefault(); 
-        await upload();
+
+        let buttonLoaderEl = document.getElementById("button-loader");
+        buttonLoaderEl.setAttribute("style", "display:block");
+
+        let file = document.getElementById("file-upload-input").files[0];
+        let textInputEl = document.getElementById("text-input");
+        let text = sanitize(textInputEl.value);
+
+        let uploadResponse = await upload(file, text);
+
+        if (uploadResponse){
+            let itemEl = createListElement(uploadResponse);
+            let listEl = document.getElementById("picture-wall-list");
+            listEl.prepend(itemEl);
+
+            formEl.reset();
+            let previewEl = document.getElementById("custom-file-upload"); //image-preview
+            previewEl.setAttribute("style", "background-image:none");
+        }
+
+        buttonLoaderEl.setAttribute("style", "display:none");
     });
 
     let fileInputEl = document.getElementById("file-upload-input");
     fileInputEl.addEventListener("change", (e) =>{
-        console.log("hier ausgewhlt");
         let file = event.target.files[0];
         if (file) {
             let previewEl = document.getElementById("custom-file-upload"); //image-preview
             let url = URL.createObjectURL(file);
             previewEl.setAttribute("style", "background-image:url("+url+")");
-            //previewEl.src = URL.createObjectURL(file);
-            //previewEl.setAttribute("style", "display:block");
         }
-        //await upload();
-
-        /*let formElement = document.getElementById("file-upload-form");
-        formElement.submit();
-        formElement.reset();*/
     });
 
     let items = await getAll();
@@ -290,19 +302,11 @@ function createListElement(item){
 
     items.forEach(item =>{
         let itemEl = createListElement(item);
-        listEl.appendChild(itemEl);
+        listEl.prepend(itemEl);
     });
 })();
 
 
 //TODO
-//verbieten dass text und bild beide leer sind
-//fotowand ladekringel beim hochladen
-//fotowand stylen
-//console logs entfernen
-//text input
 //nur imgur relative urls im json reinlassen
-//text vorher als textnode sanitizen
-//Fehlerbehandlung
-//Tests    
 </script>
