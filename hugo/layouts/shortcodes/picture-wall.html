@@ -194,7 +194,7 @@ async function upload(file, text){
 
 function getThumbnailUrl(url){
     try{
-        return "https://i.imgur.com" + url.replace(/^(.*)(\.[^\.]+)$/, "$1m$2");
+        return url.replace(/^(.*)(\.[^\.]+)$/, "$1m$2");
     }catch{
         return ""; //TODO placeholder
     }
@@ -224,6 +224,8 @@ async function uploadImage(file){
 };
 
 function createListElement(item){
+    item.url = "https://i.imgur.com" + item.url;
+
     let itemEl = document.createElement("li");
         
     let linkEl = document.createElement("a");
@@ -273,7 +275,8 @@ function sanitize(input){
         if (uploadResponse){
             let itemEl = createListElement(uploadResponse);
             let listEl = document.getElementById("picture-wall-list");
-            listEl.prepend(itemEl);
+            //listEl.prepend(itemEl);
+            listEl.append(itemEl);
 
             formEl.reset();
             let previewEl = document.getElementById("custom-file-upload"); //image-preview
@@ -302,7 +305,7 @@ function sanitize(input){
 
     items.forEach(item =>{
         let itemEl = createListElement(item);
-        listEl.prepend(itemEl);
+        listEl.append(itemEl);
     });
 })();
 
