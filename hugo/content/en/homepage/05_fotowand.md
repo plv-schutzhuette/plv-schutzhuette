@@ -8,3 +8,6 @@ header_menu: true
 
 
 {{< picture-wall >}}
+
+Bild versehentlich hochgeladen? Mail an "plvschutzhuette(at)gmail(dot)com".
+Bilder werden bei https://imgur.com/ hochgeladen.
