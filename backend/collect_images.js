@@ -75,13 +75,14 @@ function getNextLink(response){
     let items = await getAll();
     console.log(__dirname);
     console.log(__filename);
+    console.log(process.cwd());
     items.forEach(async item => {
         let url = "https://i.imgur.com" + item.url;
         let ext = url.split(".").pop();
         //const fileNameImage = "../hugo/assets/fotowand/"+item.id+"."+ext;
         //const fileNameText = "../hugo/assets/fotowand/"+item.id+".txt";
-        const fileNameImage = "../hugo/"+item.id+"."+ext;
-        const fileNameText = "../hugo/"+item.id+".txt";
+        const fileNameImage = "./hugo/"+item.id+"."+ext;
+        const fileNameText = "./hugo/"+item.id+".txt";
         const resp = await fetch(url);
         if (resp.ok && resp.body) {
             console.log("Writing to file:", fileNameImage);
