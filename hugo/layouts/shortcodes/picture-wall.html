@@ -79,7 +79,23 @@
     </svg>
 </div>
 
+{{ $dir := string (.Get "gallery_dir") }}
 <ul class="picture-wall" id="picture-wall-list">
+    {{ range (readDir (print "/assets" $dir)) }}
+        {{- $image := resources.Get (printf "%s/%s" $dir .Name) -}}
+        {{- $imageurl := printf "%s/%s" $dir .Name -}}
+        {{ if or (hasSuffix .Name ".jpeg") (hasSuffix .Name "jpg") (hasSuffix .Name "png")}}
+        {{- $fileid := index (split .Name ".") 0 -}}
+        {{- $txtfile := printf "/assets%s/%s.%s" $dir $fileid "txt" -}}
+        {{- $imagetitle := readFile $txtfile -}}
+        <li>
+            <a href="{{ ($image.Fit "1600x1600 q50").Permalink }}" class="lightbox-image" title="{{ $imagetitle | htmlEscape }}">
+                <img src="{{ ($image.Fill "300x300 q50").Permalink }}">
+                <!--<span>{{ $imagetitle }}</span>-->
+            </a>
+        </li>
+        {{ end }}
+    {{ end }}
 </ul>
 
 <form id='file-upload-form'>
@@ -150,8 +166,12 @@ async function getItems(response){
   json.forEach(item =>{
     try{
       if (item.user.login === "plv-schutzhuette"){
-        items.push(JSON.parse(item.body));
-    }
+        let tempItem = JSON.parse(item.body);
+        if (!tempItem.processed){
+            tempItem.id = item.id;
+            items.push(tempItem);
+        }
+      }
     }
     catch{}
   });

@@ -6,8 +6,7 @@ weight: 6
 header_menu: true
 ---
 
-
-{{< picture-wall >}}
+{{< picture-wall gallery_dir="/fotowand" >}}
 
 Bild versehentlich hochgeladen? Mail an "plvschutzhuette(at)gmail(dot)com".
 Bilder werden bei https://imgur.com/ hochgeladen.

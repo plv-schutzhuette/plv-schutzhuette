@@ -71,6 +71,18 @@ function getNextLink(response){
     return nextLinkResult.groups.nextLink;
 };
 
+async function updateComment(item){
+    item.processed = true;
+    let url = "https://api.github.com/repos/plv-schutzhuette/plv-schutzhuette/issues/comments/"+item.id;  
+    console.log(url);
+    delete item.id;
+    let body = {"body": JSON.stringify(item)};
+    let response = await fetch(url, {method: "PATCH", headers: getHeadersGit(), body: JSON.stringify(body)});
+    console.log(response);
+    return response;
+}
+  
+
 (async function run(){
     let items = await getAll();
     console.log(__dirname);
@@ -79,7 +91,7 @@ function getNextLink(response){
     items.forEach(async item => {
         let url = "https://i.imgur.com" + item.url;
         let ext = url.split(".").pop();
-        const fileNameImage = "./hugo/assets/fotowand/"+item.id+"."+ext;
+        const fileNameImage = "./hugo/assets/fotowand/"+item.id+"."+ext.toLowerCase();
         const fileNameText = "./hugo/assets/fotowand/"+item.id+".txt";
         const resp = await fetch(url);
         if (resp.ok && resp.body) {
@@ -93,7 +105,9 @@ function getNextLink(response){
             s.push(item.text);
             s.push(null);
             s.pipe(writerText);
-            //stream.Readable.fromWeb(item.text || "").pipe(writerText);
+
+            console.log(item);
+            await updateComment(item);
         }
     });
 })();
