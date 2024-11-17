@@ -73,7 +73,8 @@ function getNextLink(response){
 
 (async function run(){
     let items = await getAll();
-
+    console.log(__dirname);
+    console.log(__filename);
     items.forEach(async item => {
         let url = "https://i.imgur.com" + item.url;
         let ext = url.split(".").pop();
