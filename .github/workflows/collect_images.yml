@@ -6,6 +6,9 @@ on:
   schedule:
     - cron: "12 3 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
     
 jobs:
   build:
@@ -19,3 +22,6 @@ jobs:
         node-version: 22.x
         cache: 'npm'
     - run: node backend/collect_images.js
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Automated Image Upload
