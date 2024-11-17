@@ -25,4 +25,4 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Automated Image Upload
-        add_options: ''
+        add_options: '--all'
