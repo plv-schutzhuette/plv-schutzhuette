@@ -54,11 +54,11 @@ async function getItems(response){
                 let expireTime = new Date(item.created_at);
                 let days = (expireTime - currentTime) / (1000 * 60);
                 if (days < -30){
-                    console.log("item " + item.id + " is old enough (" + Math.ceil(days) + " days). -> proceed");
+                    console.log("item " + item.id + " created at " + item.created_at + " is old enough (" + Math.ceil(days) + " days). -> proceed");
                     tempItem.id = item.id;
                     items.push(tempItem);
                 } else{
-                    console.log("item " + item.id + " is too young (" + Math.ceil(days) + " days). -> skip");
+                    console.log("item " + item.id + " created at " + item.created_at + " is too young (" + Math.ceil(days) + " days). -> skip");
                 }
             }
         }
