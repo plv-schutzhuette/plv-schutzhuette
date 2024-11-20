@@ -43,5 +43,6 @@
 
 
 {{ with resources.Get "js/lightbox.js" }}<script type="text/javascript" src="{{ .RelPermalink }}"></script>{{ end }}
+{{ with resources.Get "js/compressor.min.js" }}<script type="text/javascript" src="{{ .RelPermalink }}"></script>{{ end }}
 {{ with resources.Get "css/lightbox.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}" />{{ end }}
 

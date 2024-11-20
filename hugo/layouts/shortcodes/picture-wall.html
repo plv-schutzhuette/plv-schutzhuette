@@ -197,19 +197,29 @@ async function upload(file, text){
     alert("Bitte Bild und/oder Text eingeben.");
     return;
   }
-  let uploadResponse = await uploadImage(file);
-  if (!uploadResponse){
-    return;
-  }
 
-  uploadResponse["text"] = text;
-  let response = await add(uploadResponse);
-  if (!response.ok) {
-    alert("Upload fehlgeschlagen. Versuchen Sie es später erneut(" + response.status + ").");
-    return;
-  }
+  new Compressor(file, {
+    quality: 0.8,
+    maxWidth: 2048,
+    async success(result) {
+        let uploadResponse = await uploadImage(result);
+        if (!uploadResponse){
+            return;
+        }
 
-  return uploadResponse;
+        uploadResponse["text"] = text;
+        let response = await add(uploadResponse);
+        if (!response.ok) {
+            alert("Upload fehlgeschlagen. Versuchen Sie es später erneut("+response.status+").");
+            return;
+        }
+
+        return uploadResponse;
+    },
+    error(err) {
+        alert("Upload fehlgeschlagen. Fehler: "+err.message);
+    },
+  });
 }
 
 function getThumbnailUrl(url){
@@ -240,7 +250,7 @@ async function uploadImage(file){
 
   let json = await response.json();
   
-  return {"deletehash": json.data.deletehash, "url": json.data.link.replace("https://i.imgur.com", "")};
+  return {"deletehash": json.data.deletehash, "url": json.data.link.replace("https://i.imgur.com", ""), "fullurl": json.data.link};
 };
 
 function createListElement(item){
