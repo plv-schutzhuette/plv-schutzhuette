@@ -303,6 +303,8 @@ function sanitize(input){
 
         let buttonLoaderEl = document.getElementById("button-loader");
         buttonLoaderEl.setAttribute("style", "display:block");
+        let buttonEl = document.getElementById("file-upload-button");
+        buttonEl.disabled = true;
 
         let file = document.getElementById("file-upload-input").files[0];
         let textInputEl = document.getElementById("text-input");
@@ -322,6 +324,7 @@ function sanitize(input){
         }
 
         buttonLoaderEl.setAttribute("style", "display:none");
+        buttonEl.disabled = false;
     });
 
     let fileInputEl = document.getElementById("file-upload-input");
