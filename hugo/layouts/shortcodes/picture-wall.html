@@ -168,7 +168,7 @@ async function getItems(response){
     try{
       if (item.user.login === "plv-schutzhuette"){
         let tempItem = JSON.parse(item.body);
-        if (!tempItem.processed){
+        if (!tempItem.processed && !tempItem.skip){
             tempItem.id = item.id;
             items.push(tempItem);
         }
@@ -258,7 +258,7 @@ async function uploadImage(file){
 
   let json = await response.json();
   
-  return {"deletehash": json.data.deletehash, "url": json.data.link.replace("https://i.imgur.com", ""), "fullurl": json.data.link};
+  return {"deletehash": json.data.deletehash, "url": json.data.link.replace("https://i.imgur.com", ""), "fullurl": json.data.link, "skip": false};
 };
 
 function createListElement(item){
