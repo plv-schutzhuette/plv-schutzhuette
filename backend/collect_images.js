@@ -42,13 +42,23 @@ async function getAll(){
 async function getItems(response){
     const json = await response.json();
     let items = [];
+
+    let currentTime = new Date();
+
+
     json.forEach(item =>{
         try{
         if (item.user.login === "plv-schutzhuette"){
             let tempItem = JSON.parse(item.body);
             if (!tempItem.processed){
-                tempItem.id = item.id;
-                items.push(tempItem);
+                let expireTime = new Date(tempItem.created_at);
+                let days = (expireTime - currentTime) / (1000 * 60);
+                if (days < 30){
+                    tempItem.id = item.id;
+                    items.push(tempItem);
+                } else{
+                    console.log("item " + tempItem.id + " is too young (" + Math.ceil(days) + " days). -> skip");
+                }
             }
         }
         }
@@ -111,3 +121,7 @@ async function updateComment(item){
         }
     });
 })();
+
+
+// TODO: collect_images trigger hugo action nicht https://github.com/stefanzweifel/git-auto-commit-action
+// TODO: neues progress image
