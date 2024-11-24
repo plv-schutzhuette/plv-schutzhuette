@@ -99,7 +99,10 @@ async function updateComment(item){
   
 
 (async function run(){
+    console.log("--- Start ---");
+    console.log("get all items");
     let items = await getAll();
+    console.log("found " + items.length + " item(s).");
     console.log(__dirname);
     console.log(__filename);
     console.log(process.cwd());
@@ -125,8 +128,8 @@ async function updateComment(item){
             await updateComment(item);
         }
     });
+    console.log("--- End ---");
 })();
 
 
 // TODO: collect_images trigger hugo action nicht https://github.com/stefanzweifel/git-auto-commit-action
-// TODO: neues progress image
