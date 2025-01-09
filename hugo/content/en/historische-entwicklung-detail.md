@@ -39,3 +39,54 @@ Zudem spielen landwirtschaftliche Betriebe heute eine wichtige Rolle im Natursch
 
 ### Fazit
 Die landwirtschaftliche Entwicklung im Münsterland spiegelt die Veränderungen wider, die die Landwirtschaft in ganz Deutschland erlebt hat, von der Subsistenzwirtschaft des Mittelalters über die Mechanisierung im 19. und 20. Jahrhundert bis hin zu den heutigen Herausforderungen im Bereich der Nachhaltigkeit. Die Region ist weiterhin stark landwirtschaftlich geprägt, jedoch zunehmend im Einklang mit umweltfreundlichen und nachhaltigen Praktiken, die auch der Erhaltung der typischen münsterländischen Landschaft dienen.
+
+
+
+## Moorbachsiedlung, Ahle (heute Ahaus)
+
+Im Frühjahr 1946 wurden viele aus den deutschen Ostgebieten vertriebene Familien notdürftig in Ahle und Umgebung untergebracht. Es fehhe dringend Wolmraum, vor allem für kinderreiche Familien. Viele Vertriebene haben im Laufe der Jahre eine Beschäftigung bei der Westf. Jutespinnerei und -weberei in Ahaus gefunden.
+
+Auf Initiative der Fa van Delden und mit Unterstützung des Landrats Sümmermann beantragte die Kreissiedlungsgesellschaft in Ahaus bei der Gemeinde Heek im Jahre 1949 eine Ansiedlungsgenehmigung für 20 Wohngebäude an der nordwestlichen Grenze der Bauerschaft Ahle.
+
+Der Gemeinderat hat sich in der Sitzung vom 23.8.1949 mit dem Bauvorhaben befasst und wegen der großen Folgelasten der Gemeinde seine Bedenken geäußert,
+
+Mit der Baumaßnahme wurde 1949 begonnen. Es entstanden 28 Wohngebäude mit Nebengebäuden.
+
+Nachstehend die Namen der Familien, die seinerzeit unter der heutigen Hausnummer ein neues Zuhause gefunden haben:
+
+
+**Haus-Nr.:**
+
+1 Kurt und Charlotte Morchner  
+2 Herbert und Dorothea Steiner  
+3 Josef und Hedwig Jung  
+4 August und Lucie Pelz  
+5 Paul und Martha Wagner  
+6 August und Martha Jaschke  
+7 Paul und Maria Kukofka  
+8 Arthur und Erika Wegner  
+9 Ernst und Maria Richling  
+10 Paul und Martha Stransky mit Werner und Rosi  
+11 Fritz und Lene Keilhaus  
+12 Max und Gertrud Ksoll  
+13 Gottlieb und Emma Kern  
+14 Emil und Luise Gampe  
+
+
+**Haus-Nr.:**
+
+15 Emil und Hildegard Rathmann  
+16 Paul und Elli Kotzke  
+17 Paul und Martha Wagner  
+18 Josef und Klara Webranitz  
+19 Heinrich und Anni Heinike  
+20 Helmut und Maria Markwart  
+21 Gerhard und Lucie Elsler  
+22 Karl-Heinz und Martha Piehl  
+23 Alfred und Gertrud Schneider  
+ferner: Gregor und Maria Harmansa  
+24 Willi und Martha Mrowitz  
+25 Kurt und Gertrud Steck  
+26 Olga Huff  
+27 Willi und Gretel Leingärtner  
+28 Martin und Charlotte Kleinsmann  

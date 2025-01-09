@@ -10,9 +10,9 @@ Moorbach 97
 
 48683 Ahaus
 
-Vereinsregister: TODO_REGISTERNUMMER
+Vereinsregister: VR 7838
 
-Registergericht: TODO_REGISTERGERICHT
+Registergericht: Amtsgericht Coesfeld
 
 Vertreten durch: Hendrik Vestert
 

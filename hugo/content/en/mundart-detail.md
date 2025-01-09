@@ -59,3 +59,49 @@ Es gibt jedoch auch Anzeichen für eine wachsende Wertschätzung des Plattdeutsc
 Das Münsterländer Plattdeutsch ist ein unverzichtbarer Bestandteil der Kultur und Identität des Münsterlands und ein bedeutender Teil des westfälischen Plattdeutschen. Durch seine spezifischen sprachlichen Merkmale und seinen einzigartigen Wortschatz ist das Münsterländer Platt eine lebendige, traditionsreiche Mundart. Es steht jedoch vor der Herausforderung, in einer zunehmend hochdeutschsprachigen Umgebung erhalten zu bleiben.
 
 Die Zukunft des Münsterländer Platts wird stark von den Anstrengungen abhängen, die junge Generation für die Sprache zu begeistern und sie als wichtiges Kulturgut der Region zu bewahren. Durch gezielte Bildungsangebote, digitale Medien und die Unterstützung durch Vereine und Gemeinden kann das Münsterländer Platt hoffentlich noch lange Zeit als lebendiger Teil des Münsterlands fortbestehen.
+
+
+## Ahler Gedicht - Dötakes und Geschichten
+
+Wo giff dat wull noch op de Wial, dat de Kiärk fäng iähre Schöpkes, mit Chips und ohn dat kleene Geld, dat iss Christenlehre so in Motkes.
+
+Ass Magister in de Schoole Ahle eins, lehut he uss Tofel, Griffel, Tintenfatt, bräg us bi dat eenmaleins, mangs gafft ok watt vört Gatt
+
+So an manchen Dagen, to Ostern, Pingsten un ok Fasten, spüellt he füor uss Blagen, up den groten Geigenkasten.
+
+Doch füor uss was 't kinne Freude, wassen gar nicht gerne binnen, denn wi konnen to sine Geige, nich de richtigen Töne finden.
+
+In Würden un in Ehren. doar sitt de Ahlsken ok up't Amt, een, de döt sogar die jungen Lüe belehren, für den schworen Ehestand.
+
+Nu wuss ik bloß, wu hee dat mäk, he iss wull düftig un auk helle, wie he dat all so unnerschedd, he, als Junggeselle.
+
+Dat Schloß dat ligg in'n Norden, hohe Herren hebt dor Dag un Nacht, met hoge Titel und auk Orden, ehr Hab un Gut bewacht.
+
+Met de Joahren ändert sik so allerhand. dat ligg so in de Natur, de doar von Dage bebaut sin Land, is aouk ne'n Ahisken Buer
+
+Bundesstroat, Autobahn met Trassen, dat Thema is al oalt. doar mütt aouk wie Ahlsken passen, dat stört nich den Tosammenhoalt.
+
+Vör allem hoalt de Oogen loss, föer de nächsten Tieden. dann moat aouk den Atomkoloss föer usse Döre wieken.
+
+Döhnkes und Geschichten
+
+Aus Anlass der 800-Jahr-Feier der Bauerschaft Ahle im Jahre 1988 habe ich ein Gedicht auf unsere Heimat Ahle verfasst.
+
+Wat iss dat, wat us so geföllt an usse schöne Ahle, et iss dat Hiärtken von de Wiält un usse Heimat all.
+
+Wi hebbt hier kinne Berge, et giff kinn Meer, und aouk kinn Watt, bloß ein paar kleene Hügel, süss iss hier alles platt,
+
+Un doch geföllt us hier, in usse schöne Ahl'. un kummt aouk gerne wier, in dat kleene Tal.
+
+Noch nie wass wie denn Mittelpunkt, und liggt doch middendrin, dat iss aouk den Grund, dat wie sind so "in".
+
+Alle mütt se dör dat Ahl', den Heeksken in den Auske-Stadt, den Gräesken met de Perde all', no den Düstermüllen Markt.
+
+Dat giff so manche Prötken, met all de Noabers-Lüde, lot uns dat men biebehollen, för de nächsten Tieden.
+
+Et sind de Mensken de hier wunnt, so deftig in de Sproak, und gastlich sind se rundherüm, för jeden een fröndlik Woart.
+
+All kann ik se nich nömen, doar is nu de Tied to schmal, doch son paar de soll ih kennen, de wunnt hebt hier in Ahl'.
+
+Muons mott he de Missen maken, usse Hiär-Öhm, de Pastor, miäddags spillt he an de Automaten, met sienen Jugendchor.
+
